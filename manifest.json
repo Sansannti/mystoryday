@@ -1,13 +1,14 @@
 {
   "name": "MyStoryDay - Berbagi Cerita Anda",
-  "short_name": "MyStoryDay",
+  "short_name": "MSD",
   "description": "Aplikasi untuk berbagi cerita dan pengalaman Anda dengan foto dan lokasi",
-  "start_url": "/",
+  "start_url": "/mystoryday/",
+  "scope": "/mystoryday/",
   "display": "standalone",
   "background_color": "#f8f9fa",
   "theme_color": "#ffd93d",
   "orientation": "portrait-primary",
-  "scope": "/",
+
   "icons": [
     {
       "src": "/icon-72x72.png",
