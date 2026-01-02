@@ -1,0 +1,1328 @@
+/* ==========================================
+   Reset & Base Styles
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #ffd93d;
+    --secondary-color: #ff6b35;
+    --text-dark: #2c3e50;
+    --text-light: #7f8c8d;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+    --shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+}
+
+/* ==========================================
+   Skip Link untuk Accessibility
+   ========================================== */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 100;
+    border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ==========================================
+   Navigation
+   ========================================== */
+#navbar {
+    background: var(--white);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    transition: var(--transition);
+}
+
+#navbar .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a.active {
+    color: var(--primary-color);
+}
+
+.btn-logout {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn-logout:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 217, 61, 0.4);
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-dark);
+    transition: var(--transition);
+}
+
+/* ==========================================
+   Main Content
+   ========================================== */
+#mainContent {
+    min-height: 70vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* ==========================================
+   Buttons
+   ========================================== */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: var(--transition);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 217, 61, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 0.75rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* ==========================================
+   Forms
+   ========================================== */
+.form-container {
+    max-width: 500px;
+    margin: 3rem auto;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.form-container h1,
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.form-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+.alert {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.alert-error {
+    background: #fee;
+    color: #c33;
+    border: 1px solid #fcc;
+}
+
+.alert-success {
+    background: #efe;
+    color: #3c3;
+    border: 1px solid #cfc;
+}
+
+/* ==========================================
+   Stories Grid
+   ========================================== */
+.stories-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.stories-header h1,
+.stories-header h2 {
+    color: var(--text-dark);
+}
+
+.stories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.story-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.story-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.story-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.story-card-content {
+    padding: 1.5rem;
+}
+
+.story-card-content h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.story-card-content p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.story-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* ==========================================
+   Map Styles
+   ========================================== */
+#map,
+#addStoryMap {
+    height: 500px;
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 2rem;
+    box-shadow: var(--shadow);
+}
+
+#addStoryMap {
+    height: 400px;
+}
+
+.map-section {
+    margin: 3rem 0;
+}
+
+.map-section h2 {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.leaflet-popup-content {
+    text-align: center;
+}
+
+.leaflet-popup-content img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.leaflet-popup-content h3 {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.leaflet-popup-content p {
+    margin: 0.3rem 0;
+    color: var(--text-light);
+}
+
+/* ==========================================
+   File Upload
+   ========================================== */
+.file-upload {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.file-upload input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.file-upload-label {
+    display: block;
+    padding: 2rem;
+    border: 2px dashed var(--primary-color);
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.file-upload-label:hover {
+    background: rgba(255, 217, 61, 0.05);
+}
+
+.file-preview {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.file-preview img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+}
+
+/* Camera */
+#cameraSection {
+    margin-top: 1rem;
+}
+
+#videoPreview {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+    margin: 1rem auto;
+    display: block;
+}
+
+.camera-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+/* ==========================================
+   Loading Spinner
+   ========================================== */
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: 1rem;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 217, 61, 0.1);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { 
+        transform: rotate(360deg); 
+    }
+}
+
+.loading-spinner p {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+/* ==========================================
+   Back to Top Button
+   ========================================== */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 217, 61, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 999;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(255, 217, 61, 0.4);
+}
+
+/* ==========================================
+   Footer
+   ========================================== */
+.footer {
+    background: var(--white);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 4rem;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================
+   Error State
+   ========================================== */
+.error-message {
+    text-align: center;
+    padding: 3rem;
+    color: #e74c3c;
+}
+
+.error-message h1,
+.error-message h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.error-message p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+/* ==========================================
+   View Transition API Styles
+   ========================================== */
+
+/* Animasi untuk View Transition API */
+@view-transition {
+    navigation: auto;
+}
+
+/* Root transition animation */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.4s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Fade out old view */
+::view-transition-old(root) {
+    animation-name: fadeOut;
+}
+
+/* Fade in new view */
+::view-transition-new(root) {
+    animation-name: fadeIn;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fallback untuk browser yang tidak support View Transition */
+@supports not (selector(::view-transition-old(root))) {
+    .page-enter {
+        animation: pageEnter 0.4s ease-out;
+    }
+    
+    @keyframes pageEnter {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+/* ==========================================
+   Responsive Design
+   ========================================== */
+@media (max-width: 768px) {
+    #navbar .container {
+        padding: 1rem;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        background: white;
+        flex-direction: column;
+        width: 250px;
+        height: calc(100vh - 70px);
+        padding: 2rem;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    .stories-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stories-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .form-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .story-card-content {
+        padding: 1rem;
+    }
+}
+
+/* ==========================================
+   Focus Styles untuk Keyboard Navigation
+   ========================================== */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.menu-toggle:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 5px;
+    border-radius: 4px;
+}
+
+/* ==========================================
+   Print Styles
+   ========================================== */
+@media print {
+    nav,
+    .footer,
+    .back-to-top,
+    .menu-toggle {
+        display: none;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+}
+
+/* ==========================================
+   Reduced Motion untuk Accessibility
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* Screen Reader Only - untuk aksesibilitas */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Form Fieldset Styling */
+.form-fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.form-legend {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  padding: 0;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+  width: 100%;
+}
+
+/* Section Subtitle - pengganti h2 yang tidak semantic */
+.section-subtitle {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* Help Text untuk form */
+.help-text {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Stories Section */
+.stories-section {
+  margin-top: 3rem;
+}
+
+.stories-section h2 {
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+  font-size: 1.8rem;
+}
+
+/* Story Card Button - agar seluruh card clickable */
+.story-card-button {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  display: block;
+  transition: var(--transition);
+}
+
+.story-card-button:focus {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Highlighted Story Card */
+.story-card.highlighted {
+  border: 3px solid var(--primary-color);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+/* Map Section Spacing */
+.map-section {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+}
+
+.map-section h2 {
+  color: var(--text-dark);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+/* Perbaikan untuk Story Card Content ketika dalam button */
+.story-card-button .story-card-content {
+  padding: 1.5rem;
+}
+
+.story-card-button:hover .story-card-content h3 {
+  color: var(--primary-color);
+}
+
+/* Layer Control Buttons */
+.map-section .btn-secondary {
+  margin-right: 0.5rem;
+  padding: 0.5rem 1.5rem;
+}
+
+.map-section .btn-secondary.active {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .form-legend {
+    font-size: 1.2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
+  
+  .stories-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .map-section {
+    padding: 1rem;
+  }
+  
+  .map-section h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Perbaikan untuk Camera Section */
+#cameraSection .section-subtitle {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Accessibility: Ensure sufficient color contrast */
+.form-legend,
+.section-subtitle {
+  color: #2c3e50; /* Ensuring good contrast */
+}
+
+/* Focus visible untuk keyboard navigation */
+.story-card-button:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 4px;
+  border-radius: 15px;
+}
+
+/* Improve alert accessibility */
+.alert {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.alert-error {
+  background: #fee;
+  color: #c33;
+  border: 2px solid #fcc;
+}
+
+.alert-success {
+  background: #efe;
+  color: #2c7a2c;
+  border: 2px solid #cfc;
+}
+
+/* ==========================================
+   PWA Install Banner
+   ========================================== */
+.install-banner {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  max-width: 400px;
+  width: 90%;
+  animation: slideDown 0.3s ease-out;
+}
+
+.install-banner-content h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-dark);
+}
+
+.install-banner-content p {
+  margin: 0 0 1rem 0;
+  color: var(--text-light);
+}
+
+.install-banner-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.install-banner-actions button {
+  flex: 1;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* ==========================================
+   Notification Toggle Button
+   ========================================== */
+.btn-notification {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: var(--transition);
+  border-radius: 50%;
+}
+
+.btn-notification:hover {
+  background: rgba(255, 217, 61, 0.1);
+}
+
+.btn-notification:focus {
+  outline: 2px solid var(--primary-color);
+}
+
+/* ==========================================
+   Connection Status
+   ========================================== */
+.connection-status {
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.status-online {
+  color: #27ae60;
+}
+
+.status-offline {
+  color: #e67e22;
+  background: #fff3cd;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+/* ==========================================
+   Favorites Page
+   ========================================== */
+.favorites-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.favorites-header .subtitle {
+  color: var(--text-light);
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.controls-section {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 250px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 25px;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sort-controls label {
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.sort-controls select {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.sort-controls select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Favorites Grid */
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.favorite-card {
+  position: relative;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.favorite-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.favorite-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.favorite-card-content {
+  padding: 1.5rem;
+}
+
+.favorite-card-content h3 {
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.favorite-card-content p {
+  color: var(--text-light);
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.favorite-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.remove-favorite {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: var(--transition);
+  z-index: 10;
+}
+
+.remove-favorite:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.empty-state-icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+
+.empty-state h2 {
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.empty-state p {
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-light);
+}
+
+/* ==========================================
+   Favorite Button on Story Cards
+   ========================================== */
+.favorite-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: var(--transition);
+  z-index: 10;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.favorite-btn.is-favorite {
+  animation: heartBeat 0.3s ease-out;
+}
+
+@keyframes heartBeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* ==========================================
+   Header Actions
+   ========================================== */
+.header-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ==========================================
+   PWA Status in Footer
+   ========================================== */
+.pwa-status {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+/* ==========================================
+   Notification Alerts (Temporary)
+   ========================================== */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* ==========================================
+   Responsive Adjustments
+   ========================================== */
+@media (max-width: 768px) {
+  .install-banner {
+    width: calc(100% - 2rem);
+    left: 1rem;
+    transform: none;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .controls-section {
+    flex-direction: column;
+  }
+
+  .search-box {
+    min-width: 100%;
+  }
+
+  .sort-controls {
+    width: 100%;
+  }
+
+  .sort-controls select {
+    flex: 1;
+  }
+
+  .favorites-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-actions {
+    width: 100%;
+  }
+
+  .header-actions a {
+    flex: 1;
+    text-align: center;
+  }
+}
+
+/* ==========================================
+   Print Styles for Favorites
+   ========================================== */
+@media print {
+  .favorite-btn,
+  .remove-favorite,
+  .controls-section,
+  .install-banner {
+    display: none !important;
+  }
+}

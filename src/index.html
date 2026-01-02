@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MyStoryDay - Berbagi Cerita Anda dengan Foto dan Lokasi">
+    <meta name="theme-color" content="#ffd93d">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MyStoryDay">
+    <title>MyStoryDay - Hari ini ada cerita apa?</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/png" href="/icon-96x96.png">
+    <link rel="apple-touch-icon" href="/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="/icon-192x192.png">
+</head>
+<body>
+    <!-- Skip to content untuk accessibility -->
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+    <!-- PWA Install Banner -->
+    <div id="installBanner" class="install-banner" style="display: none;" role="dialog" aria-labelledby="installBannerTitle">
+        <div class="install-banner-content">
+            <h3 id="installBannerTitle">Install MyStoryDay</h3>
+            <p>Install aplikasi untuk pengalaman yang lebih baik!</p>
+            <div class="install-banner-actions">
+                <button id="installButton" class="btn-primary">Install</button>
+                <button id="dismissBanner" class="btn-secondary">Nanti Saja</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="logo">MyStoryDay</div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#/login" id="loginLink">Login</a></li>
+                <li><a href="#/register" id="registerLink">Register</a></li>
+                <li style="display: none;" id="storiesLinkItem"><a href="#/stories" id="storiesLink">Stories</a></li>
+                <li style="display: none;" id="favoritesLinkItem"><a href="#/favorites" id="favoritesLink">Favorites</a></li>
+                <li style="display: none;" id="addStoryLinkItem"><a href="#/add-story" id="addStoryLink">Add Story</a></li>
+                <li style="display: none;" id="notificationLinkItem">
+                    <button id="notificationToggle" class="btn-notification" aria-label="Toggle push notifications" title="Toggle push notifications">
+                        <span id="notificationIcon">🔔</span>
+                    </button>
+                </li>
+                <li style="display: none;" id="logoutLinkItem"><button id="logoutBtn" class="btn-logout">Logout</button></li>
+            </ul>
+            
+            <div class="menu-toggle" id="menuToggle" aria-label="Toggle menu" role="button" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area (Dynamic) -->
+    <main id="mainContent" role="main">
+        <!-- Content akan dimuat secara dinamis oleh router -->
+        <div class="loading-spinner" id="loadingSpinner">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <p>&copy; 2025 MyStoryDay Susanti Saputri. All rights reserved.</p>
+            <p class="pwa-status">
+                <span id="pwaStatus">
+                    ${navigator.serviceWorker ? '✓ PWA Enabled' : '✗ PWA Not Supported'}
+                </span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">
+        ↑
+    </button>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Register Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('Service Worker registered:', registration);
+                        
+                        // Update PWA status
+                        const pwaStatus = document.getElementById('pwaStatus');
+                        if (pwaStatus) {
+                            pwaStatus.textContent = '✓ PWA Active';
+                            pwaStatus.style.color = '#27ae60';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+    
+    <!-- Scripts (Module) -->
+    <script type="module" src="/scripts/index.js"></script>
+    
+    <!-- Fallback untuk browser tanpa module support -->
+    <script nomodule>
+        alert('Browser Anda tidak mendukung JavaScript modules. Silakan gunakan browser modern seperti Chrome, Firefox, atau Edge.');
+    </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+APP_URL=http://localhost:3000
+
+====================================
+INFORMASI SUBMISSION
+====================================
+
+Nama: Susanti Saputri
+ID Dicoding: F891D5X1879
+
+====================================
+DEPLOYMENT URL
+====================================
+
+URL Production: https://[your-app-name].netlify.app
+# Atau gunakan salah satu dari:
+# - https://[your-app-name].vercel.app
+# - https://[your-project-id].web.app (Firebase)
+# - https://[username].github.io/[repo-name] (GitHub Pages)
+
+====================================
+TEKNOLOGI YANG DIGUNAKAN
+====================================
+
+- Vanilla JavaScript (ES6 Modules)
+- Service Worker API
+- IndexedDB API
+- Push API
+- Background Sync API
+- Web App Manifest
+- Leaflet.js (Maps)
+- Vite (Build tool)
+- Dicoding Story API
+
+====================================
+STRUKTUR DATABASE (IndexedDB)
+====================================
+
+Database: MyStoryDayDB
+Object Stores:
+1. favorites
+   - Menyimpan cerita favorit user
+   - Key: id (story id)
+   - Index: createdAt
+
+2. pendingStories
+   - Menyimpan cerita yang dibuat saat offline
+   - Key: id (auto-increment)
+   - Index: timestamp
+
+====================================
+CACHE STRATEGIES
+====================================
+
+1. CACHE_NAME (App Shell)
+   - Strategy: Cache First
+   - Assets: HTML, CSS, JS, Leaflet
+
+2. API_CACHE_NAME (Dynamic Data)
+   - Strategy: Network First, fallback to Cache
+   - Data: API responses
+
+3. IMAGE_CACHE_NAME (Images)
+   - Strategy: Cache First
+   - Data: Story photos
+
+====================================
+PUSH NOTIFICATION FLOW
+====================================
+
+1. User klik toggle notification di navbar
+2. Request permission dari browser
+3. Subscribe dengan VAPID public key
+4. Service worker menerima push event
+5. Tampilkan notifikasi dengan data dinamis
+6. Click notification -> navigate ke stories page
+
+====================================
+OFFLINE SYNC FLOW
+====================================
+
+1. User buat cerita saat offline
+2. Data disimpan ke IndexedDB (pendingStories)
+3. Register background sync
+4. Saat online, service worker auto sync
+5. Kirim data ke API
+6. Hapus dari pendingStories
+7. Tampilkan notifikasi sukses
+
+====================================
+TESTING CHECKLIST
+====================================
+
+✅ Lighthouse PWA Score: 90+
+✅ Install prompt muncul
+✅ Dapat diinstall di desktop & mobile
+✅ Offline mode: app shell tetap muncul
+✅ Offline mode: cached data masih terlihat
+✅ Push notification bekerja
+✅ Toggle notification enable/disable bekerja
+✅ Favorites: tambah/hapus/search/sort bekerja
+✅ Background sync bekerja
+✅ Responsive di mobile & desktop
+✅ Aksesibilitas: keyboard navigation
+✅ No console errors
+
+====================================
+CATATAN TAMBAHAN
+====================================
+
+1. VAPID Public Key sudah dikonfigurasi dari Dicoding API
+2. Service Worker caching menggunakan strategi yang sesuai
+3. IndexedDB untuk fitur favorites dan offline sync
+4. Push Notification dengan action buttons
+5. Install prompt dengan dismiss functionality
+6. Background Sync API untuk auto sync
+7. Semua fitur submission 1 dipertahankan
+8. Code terstruktur dan modular
+
+====================================
+MAP SERVICE
+====================================
+
+Map Service: OpenStreetMap (tidak perlu API key)
+Alternative tile layers:
+- Streets View (default)
+- Satellite View (Esri)
+
+====================================
+CARA TESTING FITUR PWA
+====================================
+
+1. Push Notification:
+   - Login ke aplikasi
+   - Klik icon notifikasi di navbar
+   - Allow permission
+   - Akan muncul test notification
+   - Buat story baru untuk trigger notification
+
+2. Offline Mode:
+   - Buka aplikasi online terlebih dahulu
+   - Matikan internet (offline mode)
+   - Refresh halaman
+   - App shell tetap muncul
+   - Cached stories masih terlihat
+   - Coba buat story baru (akan disimpan offline)
+   - Nyalakan internet kembali
+   - Story akan otomatis ter-sync
+
+3. Install PWA:
+   - Buka aplikasi di browser
+   - Akan muncul install banner
+   - Atau klik icon install di address bar
+   - Klik install
+   - Aplikasi terinstall di device
+
+4. Favorites (IndexedDB):
+   - Buka halaman Stories
+   - Klik icon love di story card
+   - Buka halaman Favorites
+   - Coba search dan sort
+   - Hapus favorite dengan klik X
+
