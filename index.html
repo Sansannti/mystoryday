@@ -10,19 +10,19 @@
     <meta name="apple-mobile-web-app-title" content="MyStoryDay">
     <title>MyStoryDay - Hari ini ada cerita apa?</title>
     
-    <!-- PWA Manifest -->
+    <!-- PWA Manifest - PERBAIKAN: Tambah base path -->
     <link rel="manifest" href="/mystoryday/manifest.json">
     
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
-    <!-- Favicon & Icons -->
+    <!-- Favicon & Icons - PERBAIKAN: Tambah base path -->
     <link rel="icon" type="image/png" href="/mystoryday/icon-96x96.png">
     <link rel="apple-touch-icon" href="/mystoryday/icon-192x192.png">
     <link rel="apple-touch-icon" sizes="152x152" href="/mystoryday/icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/mystoryday/icon-192x192.png">
     <link rel="apple-touch-icon" sizes="167x167" href="/mystoryday/icon-192x192.png">
-  <script type="module" crossorigin src="/mystoryday/assets/index-CAhbn3Nx.js"></script>
+  <script type="module" crossorigin src="/mystoryday/assets/index-B8zZk15W.js"></script>
   <link rel="stylesheet" crossorigin href="/mystoryday/assets/index-B9SIaJPn.css">
 </head>
 <body>
@@ -82,9 +82,7 @@
         <div class="container">
             <p>&copy; 2025 MyStoryDay Susanti Saputri. All rights reserved.</p>
             <p class="pwa-status">
-                <span id="pwaStatus">
-                    ${navigator.serviceWorker ? '✓ PWA Enabled' : '✗ PWA Not Supported'}
-                </span>
+                <span id="pwaStatus">Checking PWA status...</span>
             </p>
         </div>
     </footer>
@@ -97,13 +95,17 @@
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     
-    <!-- Register Service Worker -->
+    <!-- Register Service Worker - PERBAIKAN UTAMA -->
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
+                // PENTING: Gunakan path lengkap dengan base path
+                navigator.serviceWorker.register('/mystoryday/sw.js', {
+                    scope: '/mystoryday/'
+                })
                     .then(registration => {
-                        console.log('Service Worker registered:', registration);
+                        console.log('✅ Service Worker registered successfully:', registration);
+                        console.log('Scope:', registration.scope);
                         
                         // Update PWA status
                         const pwaStatus = document.getElementById('pwaStatus');
@@ -113,9 +115,20 @@
                         }
                     })
                     .catch(error => {
-                        console.error('Service Worker registration failed:', error);
+                        console.error('❌ Service Worker registration failed:', error);
+                        const pwaStatus = document.getElementById('pwaStatus');
+                        if (pwaStatus) {
+                            pwaStatus.textContent = '✗ PWA Registration Failed';
+                            pwaStatus.style.color = '#e74c3c';
+                        }
                     });
             });
+        } else {
+            console.log('Service Worker not supported');
+            const pwaStatus = document.getElementById('pwaStatus');
+            if (pwaStatus) {
+                pwaStatus.textContent = '✗ PWA Not Supported';
+            }
         }
     </script>
     
