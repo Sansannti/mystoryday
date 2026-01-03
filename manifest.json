@@ -1,6 +1,6 @@
 {
   "name": "MyStoryDay - Berbagi Cerita Anda",
-  "short_name": "MSD",
+  "short_name": "MyStoryDay",
   "description": "Aplikasi untuk berbagi cerita dan pengalaman Anda dengan foto dan lokasi",
   "start_url": "/mystoryday/",
   "scope": "/mystoryday/",
@@ -11,49 +11,49 @@
 
   "icons": [
     {
-      "src": "/icon-72x72.png",
+      "src": "/mystoryday/icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-96x96.png",
+      "src": "/mystoryday/icon-96x96.png",
       "sizes": "96x96",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-128x128.png",
+      "src": "/mystoryday/icon-128x128.png",
       "sizes": "128x128",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-144x144.png",
+      "src": "/mystoryday/icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-152x152.png",
+      "src": "/mystoryday/icon-152x152.png",
       "sizes": "152x152",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-192x192.png",
+      "src": "/mystoryday/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-384x384.png",
+      "src": "/mystoryday/icon-384x384.png",
       "sizes": "384x384",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-512x512.png",
+      "src": "/mystoryday/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -61,28 +61,28 @@
   ],
   "screenshots": [
     {
-      "src": "/screenshots/stories-page.png",
+      "src": "/mystoryday/screenshots/stories-page.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Halaman Cerita dengan Peta"
     },
     {
-      "src": "/screenshots/add-story-page.png",
+      "src": "/mystoryday/screenshots/add-story-page.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Halaman Tambah Cerita"
     },
     {
-      "src": "/screenshots/mobile-stories.png",
+      "src": "/mystoryday/screenshots/mobile-stories.png",
       "sizes": "750x1334",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Tampilan Mobile - Daftar Cerita"
     },
     {
-      "src": "/screenshots/mobile-favorites.png",
+      "src": "/mystoryday/screenshots/mobile-favorites.png",
       "sizes": "750x1334",
       "type": "image/png",
       "form_factor": "narrow",
@@ -94,10 +94,10 @@
       "name": "Lihat Cerita",
       "short_name": "Stories",
       "description": "Lihat semua cerita",
-      "url": "/#/stories",
+      "url": "/mystoryday/#/stories",
       "icons": [
         {
-          "src": "/icon-96x96.png",
+          "src": "/mystoryday/icon-96x96.png",
           "sizes": "96x96"
         }
       ]
@@ -106,10 +106,10 @@
       "name": "Tambah Cerita",
       "short_name": "Add Story",
       "description": "Buat cerita baru",
-      "url": "/#/add-story",
+      "url": "/mystoryday/#/add-story",
       "icons": [
         {
-          "src": "/icon-96x96.png",
+          "src": "/mystoryday/icon-96x96.png",
           "sizes": "96x96"
         }
       ]
@@ -118,10 +118,10 @@
       "name": "Favorit",
       "short_name": "Favorites",
       "description": "Lihat cerita favorit",
-      "url": "/#/favorites",
+      "url": "/mystoryday/#/favorites",
       "icons": [
         {
-          "src": "/icon-96x96.png",
+          "src": "/mystoryday/icon-96x96.png",
           "sizes": "96x96"
         }
       ]
