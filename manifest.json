@@ -3,12 +3,11 @@
   "short_name": "MyStoryDay",
   "description": "Aplikasi untuk berbagi cerita dan pengalaman Anda dengan foto dan lokasi",
   "start_url": "/mystoryday/",
-  "scope": "/mystoryday/",
   "display": "standalone",
   "background_color": "#f8f9fa",
   "theme_color": "#ffd93d",
   "orientation": "portrait-primary",
-
+  "scope": "/mystoryday/",
   "icons": [
     {
       "src": "/mystoryday/icon-72x72.png",
@@ -57,36 +56,6 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "/mystoryday/screenshots/stories-page.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Halaman Cerita dengan Peta"
-    },
-    {
-      "src": "/mystoryday/screenshots/add-story-page.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Halaman Tambah Cerita"
-    },
-    {
-      "src": "/mystoryday/screenshots/mobile-stories.png",
-      "sizes": "750x1334",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Tampilan Mobile - Daftar Cerita"
-    },
-    {
-      "src": "/mystoryday/screenshots/mobile-favorites.png",
-      "sizes": "750x1334",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Tampilan Mobile - Favorit"
     }
   ],
   "shortcuts": [

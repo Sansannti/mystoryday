@@ -253,10 +253,34 @@ self.addEventListener('notificationclick', (event) => {
   console.log('[SW] Notification clicked:', event.action);
   event.notification.close();
 
+  // ✅ Handle close action
   if (event.action === 'close') {
     return;
   }
 
+  // ✅ Handle view action untuk favorite notifications
+  if (event.action === 'view' && event.notification.data?.url) {
+    event.waitUntil(
+      clients.matchAll({ type: 'window', includeUncontrolled: true })
+        .then((clientsArr) => {
+          // Check if there's already a window open
+          for (const client of clientsArr) {
+            if (client.url.includes(BASE_PATH) && 'focus' in client) {
+              console.log('[SW] Focusing existing window and navigating');
+              return client.focus().then(() => {
+                return client.navigate(event.notification.data.url);
+              });
+            }
+          }
+          // Open new window if none exists
+          console.log('[SW] Opening new window');
+          return clients.openWindow(event.notification.data.url);
+        })
+    );
+    return;
+  }
+
+  // ✅ Default action (click body notification)
   const targetUrl = event.notification.data?.url || `${BASE_PATH}/`;
 
   event.waitUntil(
