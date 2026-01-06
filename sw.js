@@ -68,6 +68,10 @@ self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
+  if (url.hostname.endsWith('tile.openstreetmap.org')) {
+  return;
+}
+
   // Skip chrome extension and other non-http requests
   if (!request.url.startsWith('http')) {
     return;
@@ -116,31 +120,36 @@ self.addEventListener('fetch', (event) => {
   /* -------------------------------
      IMAGE: Cache First with Network Fallback
      ------------------------------- */
-  if (request.destination === 'image') {
-    event.respondWith(
-      caches.match(request).then((cached) => {
-        if (cached) {
-          console.log('[SW] Serving image from cache:', request.url);
-          return cached;
-        }
-        
-        return fetch(request).then((response) => {
-          if (response.status === 200) {
+if (request.destination === 'image') {
+  event.respondWith(
+    caches.match(request).then((cached) => {
+      if (cached) {
+        return cached;
+      }
+
+      return fetch(request)
+        .then((response) => {
+          if (response && response.status === 200) {
             const clone = response.clone();
             caches.open(IMAGE_CACHE).then((cache) => {
               cache.put(request, clone);
-              console.log('[SW] Cached image:', request.url);
             });
           }
           return response;
-        }).catch(() => {
-          console.log('[SW] Image fetch failed:', request.url);
-          // Return placeholder or error image if needed
+        })
+        .catch(() => {
+          console.warn('[SW] Image fetch failed:', request.url);
+
+          // ✅ Response valid, bukan undefined
+          return new Response('', {
+            status: 204,
+            statusText: 'No Content'
+          });
         });
-      })
-    );
-    return;
-  }
+    })
+  );
+  return;
+}
 
   /* -------------------------------
      NAVIGATION: Network First with Offline Fallback
@@ -253,34 +262,10 @@ self.addEventListener('notificationclick', (event) => {
   console.log('[SW] Notification clicked:', event.action);
   event.notification.close();
 
-  // ✅ Handle close action
   if (event.action === 'close') {
     return;
   }
 
-  // ✅ Handle view action untuk favorite notifications
-  if (event.action === 'view' && event.notification.data?.url) {
-    event.waitUntil(
-      clients.matchAll({ type: 'window', includeUncontrolled: true })
-        .then((clientsArr) => {
-          // Check if there's already a window open
-          for (const client of clientsArr) {
-            if (client.url.includes(BASE_PATH) && 'focus' in client) {
-              console.log('[SW] Focusing existing window and navigating');
-              return client.focus().then(() => {
-                return client.navigate(event.notification.data.url);
-              });
-            }
-          }
-          // Open new window if none exists
-          console.log('[SW] Opening new window');
-          return clients.openWindow(event.notification.data.url);
-        })
-    );
-    return;
-  }
-
-  // ✅ Default action (click body notification)
   const targetUrl = event.notification.data?.url || `${BASE_PATH}/`;
 
   event.waitUntil(
