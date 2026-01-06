@@ -176,7 +176,7 @@ var E=r=>{throw TypeError(r)};var I=(r,e,t)=>e.has(r)||E("Cannot "+t);var l=(r,e
                   name="description" 
                   required
                   placeholder="Ceritakan pengalaman Anda..."
-                  aria-label="Deskripsi Cerita"
+
                 ></textarea>
               </div>
             </fieldset>
@@ -185,24 +185,36 @@ var E=r=>{throw TypeError(r)};var I=(r,e,t)=>e.has(r)||E("Cannot "+t);var l=(r,e
             <fieldset class="form-fieldset">
               <legend class="form-legend">Foto Cerita</legend>
               
-              <div class="form-group">
-                <label class="section-subtitle">Upload dari File</label>
-                <p id="photoHelpText" class="help-text">Format: JPG, PNG. Maksimal 5MB</p>
-                <div class="file-upload">
-                  <input 
-                    type="file" 
-                    id="photo" 
-                    name="photo" 
-                    accept="image/*" 
-                    aria-label="Upload Foto"
-                    aria-describedby="photoHelpText"
-                  >
-                  <label for="photo" class="file-upload-label">
-                    <span>📷 Klik untuk upload foto</span>
-                  </label>
-                </div>
-                <div id="filePreview" class="file-preview" aria-live="polite"></div>
+            <div class="form-group">
+              <label for="photo" class="section-subtitle">
+                Upload dari File
+              </label>
+
+              <p id="photoHelpText" class="help-text">
+                Format: JPG, PNG. Maksimal 5MB
+              </p>
+
+              <div class="file-upload">
+                <label for="photo" class="file-upload-label">
+                  📷 Klik untuk upload foto
+                </label>
+
+                <input
+                  type="file"
+                  id="photo"
+                  name="photo"
+                  accept="image/*"
+                  aria-describedby="photoHelpText"
+                >
               </div>
+
+              <div
+                id="filePreview"
+                class="file-preview"
+                aria-live="polite"
+              ></div>
+            </div>
+
               
               <div class="form-group" id="cameraSection">
                 <label class="section-subtitle">Atau Gunakan Kamera</label>
